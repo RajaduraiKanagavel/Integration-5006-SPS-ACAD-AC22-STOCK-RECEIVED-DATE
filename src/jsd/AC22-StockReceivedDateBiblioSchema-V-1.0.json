@@ -1,0 +1,40 @@
+{
+	"$id": "http://oup.com/sps/StockRecievedBiblio.json",
+	"type": "object",
+	"properties": {
+		"impressionNumber": {
+			"$id": "/properties/impressionNumber",
+			"type": "string",
+			"title": "ImpressionNumber",
+			"maxLength": 2,
+			"default": "",
+			"examples": ["AB"]
+		},
+		"deliveryDate": {
+			"$id": "/properties/deliveryDate",
+			"type": "string",
+			"title": "deliveryDate",
+			"maxLength": 8,
+			"examples": ["DDMMYYYY"]
+		},
+		"productISBN": {
+			"$id": "/properties/productISBN",
+			"type": "string",
+			"title": "Product ISBN",
+			"maxLength": 18,
+			"default": "",
+			"examples": ["ABCD1234"]
+		},
+		"publicationDate": {
+			"$id": "/properties/publicationDate",
+			"type": "string",
+			"title": "publicationDate",			
+			"default": "",
+			"maxLength": 8,
+			"examples": ["DDMMYYYY"]
+		}
+	},
+	"required": ["impressionNumber",
+	"productISBN",
+	"publicationDate"]
+}

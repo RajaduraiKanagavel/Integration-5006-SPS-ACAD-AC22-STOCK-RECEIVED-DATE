@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mappings xmlns="http://dozermapper.github.io/schema/bean-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://dozermapper.github.io/schema/bean-mapping https://dozermapper.github.io/schema/bean-mapping.xsd">
+    <configuration>
+        <wildcard>false</wildcard>
+    </configuration>
+    <mapping>
+        <class-a>com.oup.integration.sps.acad.stockreceived.sap.pojo.StockreceiveddateAC22</class-a>
+        <class-b>com.oup.integration.sps.acad.stockreceived.biblio.pojo.StockreceiveddateBiblioAC22</class-b>
+        <field>
+            <a>impressionNumber</a>
+            <b>impressionNumber</b>
+        </field>
+        <field>
+            <a>deliveryDate</a>
+            <b>deliveryDate</b>
+        </field>
+        <field>
+            <a>productISBN</a>
+            <b>productISBN</b>
+        </field>
+        <field>
+            <a>publicationDate</a>
+            <b>publicationDate</b>
+        </field>
+        
+    </mapping>
+</mappings>

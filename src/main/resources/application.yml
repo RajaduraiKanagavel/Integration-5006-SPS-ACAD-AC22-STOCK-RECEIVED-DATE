@@ -1,0 +1,217 @@
+spring:
+  application:
+    name: SPS-ACAD-STOCK-RECEIVED-DATE
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin  
+      
+server:
+  port: 8080  
+eureka:
+  client:
+    enabled: true
+    service-url:  
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    
+activemq:
+    uk:
+      queuename: queue:SPS-ACAD-UK-AC22-STOCK-RECEIVED-DATE-DEV
+
+    us:
+      queuename: queue:SPS-ACAD-US-US22-STOCK-RECEIVED-DATE-DEV
+
+file:
+  backup:
+    location: C:\\JavaTest\\SPS\\AC22_StockReceivedDate\\   
+       
+ftp:
+  uk: 
+    server: GBOXFFTPWIN
+    port: 21
+    username: ftpunix
+    password: 12Xdirect
+    drop:
+      location: /acad_abc_dev/Export
+
+  us: 
+    server: GBOXFFTPWIN
+    port: 21
+    username: ftpunix
+    password: 12Xdirect
+    drop:
+      location: /acad_abc_dev/Export
+      
+management:
+  security:
+    enabled: false
+  metrics:
+    export:
+      prometheus: 
+        enabled: true
+    distribution:
+      percentiles[http.server.requests]: 0.95, 0.99
+      percentiles-histogram[http.server.requests]: true
+      sla[http.server.requests]: 10ms, 100ms
+
+---
+spring:
+  profiles: dev
+  activemq:
+    broker-url: tcp://gbsmixdev01.uk.oup.com:63636
+    user: servicemix
+    password: servicemix@1234
+
+activemq:
+    uk:
+      queuename: queue:SPS-ACAD-UK-AC22-STOCK-RECEIVED-DATE-DEV
+ 
+
+    us:
+      queuename: queue:SPS-ACAD-US-US22-STOCK-RECEIVED-DATE-DEV
+      
+file:
+  backup:
+    location: /OUT/SPS/${spring.application.name}/dev
+    
+ftp:
+  uk: 
+    server: GBOXFFTPWIN
+    port: 21
+    username: ftpunix
+    password: 12Xdirect
+    drop:
+      location: /acad_abc_dev/Export
+
+  us: 
+    server: GBOXFFTPWIN
+    port: 21
+    username: ftpunix
+    password: 12Xdirect
+    drop:
+      location: /acad_abc_dev/Export
+    
+eureka:
+  client:
+    enabled: true
+    service-url:  
+      defaultZone: http://dev-oupeureka:8761/eureka/
+  instance:
+    prefer-ip-address: true   
+
+management:
+  security:
+    enabled: false
+  metrics:
+    export:
+      prometheus: 
+        enabled: true
+    distribution:
+      percentiles[http.server.requests]: 0.95, 0.99
+      percentiles-histogram[http.server.requests]: true
+      sla[http.server.requests]: 10ms, 100ms
+      
+---
+spring:
+  profiles: uat
+  activemq:
+    broker-url: tcp://gboxfamqdev001.uk.oup.com:61616
+    user: servicemix
+    password: servicemix@1234
+  
+activemq:
+    uk:
+      queuename: queue:SPS-ACAD-UK-AC22-STOCK-RECEIVED-DATE-QA
+
+    us:
+      queuename: queue:SPS-ACAD-US-US22-STOCK-RECEIVED-DATE-QA
+        
+file:
+  backup:
+    location: /OUT/SPS/${spring.application.name}/uat
+    
+ftp:
+  uk: 
+    server: GBOXFFTPWIN
+    port: 21
+    username: ftpunix
+    password: 12Xdirect
+    drop:
+      location: /acad_abc_qa/Export
+
+  us: 
+    server: GBOXFFTPWIN
+    port: 21
+    username: ftpunix
+    password: 12Xdirect
+    drop:
+      location: /acad_abc_qa/Export
+    
+eureka:
+  client:
+    enabled: true
+    service-url:  
+      defaultZone: http://uat-oupeureka:8761/eureka/
+  instance:
+    prefer-ip-address: true    
+    
+management:
+  security:
+    enabled: false
+  metrics:
+    export:
+      prometheus: 
+        enabled: true
+    distribution:
+      percentiles[http.server.requests]: 0.95, 0.99
+      percentiles-histogram[http.server.requests]: true
+      sla[http.server.requests]: 10ms, 100ms
+---
+spring:
+  profiles: prod
+  activemq:
+    broker-url: tcp://gbsmixprd02.uk.oup.com:63636
+    user: servicemix
+    password: servicemix@1234
+
+activemq:
+    uk:
+      queuename: queue:SPS-ACAD-UK-AC22-STOCK-RECEIVED-DATE-PRD
+    us:
+      queuename: queue:SPS-ACAD-US-US22-STOCK-RECEIVED-DATE-PRD
+      
+file:
+  backup:
+    location: /OUT/SPS/${spring.application.name}/prod
+    
+ftp:
+  uk: 
+    server: GBOXFFTPWIN
+    port: 21
+    username: ftpunix
+    password: 12Xdirect
+    drop:
+      location: /acad_abc/Export
+      
+  us: 
+    server: GBOXFFTPWIN
+    port: 21
+    username: ftpunix
+    password: 12Xdirect
+    drop:
+      location: /acad_abc/Export
+    
+management:
+  security:
+    enabled: false
+  metrics:
+    export:
+      prometheus: 
+        enabled: true
+    distribution:
+      percentiles[http.server.requests]: 0.95, 0.99
+      percentiles-histogram[http.server.requests]: true
+      sla[http.server.requests]: 10ms, 100ms
+       

@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: SPS-ACAD-TITLE-MASTER-DATA
+  activemq:
+    broker-url: vm://embedded?broker.persistent=false,useShutdownHook=false
+    in-memory: true
+      
+server:
+  port: 8080  
+eureka:
+  client:
+    enabled: false
+    
+activemq:
+    uk:
+      queuename: queue:SPS-ACAD-UK-AC16-TITLE-MASTER-DATA-DEV
+    us:
+      queuename: queue:SPS-ACAD-TITLE-MASTER-DATA-DEV
+
+file:
+  backup:
+    location: ${java.io.tmpdir}  
+       
+ftp:
+  uk: 
+    server: localhost
+    port: 9999
+    username: ftpuser
+    password: ftppass
+    drop:
+      location: /acad_abc_dev/Export
+  us: 
+    server: localhost
+    port: 9999
+    username: ftpuser
+    password: ftppass
+    drop:
+      location: /acad_abc_dev/Export
+      
+management:
+  security:
+    enabled: false
+  metrics:
+    export:
+      prometheus: 
+        enabled: false
