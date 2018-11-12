@@ -28,7 +28,7 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 @MockEndpointsAndSkip("ftp:.*|file:.*|activemq:.*") //All endpoints are sniffed and recorded in a mock endpoint. The original endpoint is not invoked.
 @MockEndpoints // All endpoints are sniffed and recorded in a mock endpoint.
 @UseAdviceWith
-public class TitleMasterDataApplicationTests {
+public class StockReceivedDateUS22Tests {
 	
 	@Autowired
 	private CamelContext camelContext;
@@ -70,21 +70,16 @@ public class TitleMasterDataApplicationTests {
 		backupSAPLocation.expectedMessageCount(1);
 		backupBiblioLocation.expectedMessageCount(7);
 		
-		String body = typeConverter.convertTo(String.class, new File("src/test/resources/ac160001.dat"));
+		String body = typeConverter.convertTo(String.class, new File("src/test/resources/a22160001.dat"));
 		backupSAPLocation.expectedBodiesReceived(body);
 		
 		List<String> expectedBodies = new ArrayList<>();
-		expectedBodies.add(typeConverter.convertTo(String.class, new File("src/test/resources/ac160001.dat_COMLIV-C.json")));
-		expectedBodies.add(typeConverter.convertTo(String.class, new File("src/test/resources/ac160001.dat_9780192574794.json")));
-		expectedBodies.add(typeConverter.convertTo(String.class, new File("src/test/resources/ac160001.dat_9780192574855.json")));
-		expectedBodies.add(typeConverter.convertTo(String.class, new File("src/test/resources/ac160001.dat_9780198838548.json")));
-		expectedBodies.add(typeConverter.convertTo(String.class, new File("src/test/resources/ac160001.dat_9780191874758.json")));
-		expectedBodies.add(typeConverter.convertTo(String.class, new File("src/test/resources/ac160001.dat_9780198790044.json")));
-		expectedBodies.add(typeConverter.convertTo(String.class, new File("src/test/resources/ac160001.dat_9780192149770.json")));
+		expectedBodies.add(typeConverter.convertTo(String.class, new File("src/test/resources/ac220001.dat_9780191874758.json")));
+		
 		backupBiblioLocation.expectedBodiesReceivedInAnyOrder(expectedBodies);
 		dropLocationActiveMQ.expectedBodiesReceivedInAnyOrder(expectedBodies);
 		
-		ftpserver.sendBodyAndHeader(body, "CamelFileName", "ac160001.dat");
+		ftpserver.sendBodyAndHeader(body, "CamelFileName", "ac220001.dat");
 		
 		dropLocationActiveMQ.assertIsSatisfied();
 		backupSAPLocation.assertIsSatisfied();
@@ -92,38 +87,6 @@ public class TitleMasterDataApplicationTests {
 		
 	}
 	
-	@Test
-	public void invalidSAPDataType() throws InterruptedException {
-		
-		backupSAPLocation.expectedMessageCount(1);
-		backupBiblioLocation.expectedMessageCount(0);
-		backupErrorLocation.expectedMessageCount(1);
-		
-		String body = camelContext.getTypeConverter().convertTo(String.class, new File("src/test/resources/ac160002.dat"));
-		backupSAPLocation.expectedBodiesReceived(body);
-		
-		ftpserver.sendBodyAndHeader(body, "CamelFileName", "ac160002.dat");
-		
-		backupSAPLocation.assertIsSatisfied();
-		backupBiblioLocation.assertIsSatisfied();
-		backupErrorLocation.assertIsSatisfied();
-	}
 	
-	@Test
-	public void invalidSAP() throws InterruptedException {
-		
-		backupSAPLocation.expectedMessageCount(1);
-		backupBiblioLocation.expectedMessageCount(0);
-		backupErrorLocation.expectedMessageCount(1);
-		
-		String body = "test";
-		backupSAPLocation.expectedBodiesReceived(body);
-		ftpserver.sendBodyAndHeader(body, "CamelFileName", "ac160003.dat");
-			
-		backupSAPLocation.assertIsSatisfied();
-		backupBiblioLocation.assertIsSatisfied();
-		backupErrorLocation.assertIsSatisfied();
-		
-	}
 
  }

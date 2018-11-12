@@ -37,12 +37,12 @@ ftp:
       location: /acad_abc_dev/Export
 
   us: 
-    server: GBOXFFTPWIN
+    server: uscarsappdc01.us.oup.com
     port: 21
-    username: ftpunix
-    password: 12Xdirect
+    username: USOUP\us_oxfordpublish
+    password: EWvqG517
     drop:
-      location: /acad_abc_dev/Export
+      location: /R2Q400/ABC/IN/
       
 management:
   security:
@@ -63,7 +63,8 @@ spring:
     broker-url: tcp://gbsmixdev01.uk.oup.com:63636
     user: servicemix
     password: servicemix@1234
-
+server:
+  port: 8080
 activemq:
     uk:
       queuename: queue:SPS-ACAD-UK-AC22-STOCK-RECEIVED-DATE-DEV
@@ -86,12 +87,12 @@ ftp:
       location: /acad_abc_dev/Export
 
   us: 
-    server: GBOXFFTPWIN
+    server: uscarsappdc01.us.oup.com
     port: 21
-    username: ftpunix
-    password: 12Xdirect
+    username: USOUP\us_oxfordpublish
+    password: EWvqG517
     drop:
-      location: /acad_abc_dev/Export
+      location: /R2Q400/ABC/IN/
     
 eureka:
   client:
@@ -142,12 +143,12 @@ ftp:
       location: /acad_abc_qa/Export
 
   us: 
-    server: GBOXFFTPWIN
+    server: uscarsappdc01.us.oup.com
     port: 21
-    username: ftpunix
-    password: 12Xdirect
+    username: USOUP\us_oxfordpublish
+    password: EWvqG517
     drop:
-      location: /acad_abc_qa/Export
+      location: /R2Q400/ABC/IN/
     
 eureka:
   client:
@@ -196,12 +197,12 @@ ftp:
       location: /acad_abc/Export
       
   us: 
-    server: GBOXFFTPWIN
+    server: uscarsappdc01.us.oup.com
     port: 21
-    username: ftpunix
-    password: 12Xdirect
+    username: USOUP\us_oxfordpublish
+    password: EWvqG517
     drop:
-      location: /acad_abc/Export
+      location: /R2Q400/ABC/IN/
     
 management:
   security:
