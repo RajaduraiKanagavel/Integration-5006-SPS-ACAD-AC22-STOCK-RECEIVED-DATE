@@ -10,7 +10,9 @@ public class SAPFileProcessor implements Processor {
 		
 		String inputBody=exchange.getIn().getBody(String.class);
 		exchange.getOut().setHeaders(exchange.getIn().getHeaders());		
-		exchange.getOut().setBody(inputBody.substring(inputBody.indexOf("\n")+1, inputBody.lastIndexOf("\n")));
+		exchange.getOut().setBody(inputBody.substring(inputBody.indexOf("\n")+1, inputBody.lastIndexOf("\n")-1));
+		
+	//	System.out.println("############################################"+exchange.getOut().getBody());
 		
 	}
 

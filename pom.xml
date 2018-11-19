@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>sps-acad-stockreceiveddate</name>
+	<name>sps-acad-ac22-us22-stockreceiveddate</name>
 	<description>ACAD STOCK RECEIVED DATE</description>
 
 	<parent>
@@ -28,7 +28,7 @@
 		
 		<!-- properties used for creating a docker container -->
 		<docker-host>http://localhost:2375</docker-host>
-		<docker-image-name>sps-acad-stockreceiveddate</docker-image-name>
+		<docker-image-name>sps-acad-ac22-us22-stockreceiveddate</docker-image-name>
 	</properties>
 
 	<dependencies>

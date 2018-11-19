@@ -61,8 +61,10 @@ public class MainRouteUS22 extends RouteBuilder {
 				.streaming()
 				.parallelProcessing()
 				.to("direct:transform_sap_to_biblioUS22")
-				.setHeader("productISBN", jsonpath("$.productISBN").regexReplaceAll(":", "-"))
 				
+				
+				.setHeader("productISBN", simple("${body.getProductISBN()}"))
+				.log(" DEBUG  ${header.productISBN}")
 				.marshal().json(JsonLibrary.Jackson)
 				
 				.log(LoggingLevel.INFO, "com.oup.sps", "Constructed Biblio message for ISBN ${header.productISBN} : ${body}")

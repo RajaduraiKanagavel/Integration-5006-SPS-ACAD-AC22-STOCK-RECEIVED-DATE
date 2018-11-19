@@ -59,7 +59,7 @@ public class MainRouteAC22 extends RouteBuilder {
 				.streaming()
 				.parallelProcessing()
 				.to("direct:transform_sap_to_biblio")
-				.setHeader("productISBN", jsonpath("$.productISBN").regexReplaceAll(":", "-"))
+				.setHeader("productISBN", simple("${body.getProductISBN()}"))
 				.marshal().json(JsonLibrary.Jackson)
 				.log(LoggingLevel.INFO, "com.oup.sps", "Constructed Biblio message for ISBN ${header.productISBN} : ${body}")
 				.wireTap("file:{{file.backup.location}}/2.0 SentToBiblio?fileName=${date:now:yyyy/MM/dd/}$simple{header.CamelFileName}_$simple{header.productISBN}.json")
